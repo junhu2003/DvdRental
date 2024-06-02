@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\DvdRental.Library\DvdRental.Library.csproj" />
+    <ProjectReference Include="..\DvdRental.Library\DvdRental.Library.csproj" />
   </ItemGroup>
 
 </Project>
