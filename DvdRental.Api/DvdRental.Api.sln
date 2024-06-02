@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34916.146
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DvdRental.Api", "DvdRental.Api\DvdRental.Api.csproj", "{0F96AF8E-ED90-4E1B-AB84-F31D197BEA77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DvdRental.Library", "..\DvdRental.Library\DvdRental.Library.csproj", "{9E3CA16B-AE8A-491A-B87D-F8359EE52AC8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F96AF8E-ED90-4E1B-AB84-F31D197BEA77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F96AF8E-ED90-4E1B-AB84-F31D197BEA77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F96AF8E-ED90-4E1B-AB84-F31D197BEA77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F96AF8E-ED90-4E1B-AB84-F31D197BEA77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E3CA16B-AE8A-491A-B87D-F8359EE52AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E3CA16B-AE8A-491A-B87D-F8359EE52AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E3CA16B-AE8A-491A-B87D-F8359EE52AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E3CA16B-AE8A-491A-B87D-F8359EE52AC8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E37950A-CBAB-490F-97EB-A42F6A1AB784}
+	EndGlobalSection
+EndGlobal
