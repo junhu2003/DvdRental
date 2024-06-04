@@ -3,7 +3,7 @@ namespace DvdRental.Library.Handlers
 {
     public enum HandlerType
     {
-        InitCalcHandler,        
+        InitDvdRentalHandler,
         FinalCalcHandler
     }
 }
