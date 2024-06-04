@@ -9,7 +9,7 @@ namespace DvdRental.Library.Repositories
 {
     public interface IActorRepository
     {
-        List<Actor> GetAll();
+        List<Actor>? GetAll();
         Actor? GetById(int id);
     }
 }

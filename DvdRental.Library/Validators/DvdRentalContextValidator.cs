@@ -16,7 +16,7 @@ namespace DvdRental.Library.Validators
             _actorValidator = actorValidator;            
 
             //validate init handler
-            RuleSet(Handlers.HandlerType.InitCalcHandler.ToString(), () =>
+            RuleSet(Handlers.HandlerType.InitDvdRentalHandler.ToString(), () =>
             {
                 //validate context
                 RuleFor(context => context.Inputs).NotNull().WithSeverity(Severity.Error);

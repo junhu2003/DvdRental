@@ -7,7 +7,7 @@ namespace DvdRental.Library.Repositories
     {
         public ActorRepository(IDbContextFactory dbContextFactory) : base(dbContextFactory) { }
 
-        public List<Actor> GetAll()
+        public List<Actor>? GetAll()
         {
             using (var _dbContext = (DvdRentalDbContext)_dbContextFactory.CreateDbContext(DatabaseType.Postgres))
             {

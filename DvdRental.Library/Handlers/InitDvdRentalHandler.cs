@@ -21,7 +21,7 @@ namespace DvdRental.Library.Handlers
             _actorRepository = actorRepository;
         }
 
-        public override HandlerType HandlerType => HandlerType.InitCalcHandler;
+        public override HandlerType HandlerType => HandlerType.InitDvdRentalHandler;
 
         public override string[] RuleSets => new string[] { HandlerType.ToString() };
 

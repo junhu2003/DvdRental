@@ -6,7 +6,7 @@ using System.Text;
 using DvdRental.Library.CustomTypes;
 using DvdRental.Library.Extensions;
 
-namespace Victor.Calculator.Library.Mappers
+namespace DvdRental.Library.Mappers
 {
     public class EmployeeStatusTypeHandler : SqlMapper.TypeHandler<EmployeeStatus>
     {

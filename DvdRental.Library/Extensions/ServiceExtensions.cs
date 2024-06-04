@@ -6,7 +6,7 @@ using DvdRental.Library.Models;
 using DvdRental.Library.Repositories;
 using DvdRental.Library.Services;
 using DvdRental.Library.Validators;
-using Victor.Calculator.Library;
+using DvdRental.Library;
 
 namespace DvdRental.Library.Extensions
 {
