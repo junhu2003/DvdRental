@@ -1,0 +1,14 @@
+{
+  "AddressId": 3,
+  "Address1": "23 Workhaven Lane",
+  "Address2": null,
+  "District": "Alberta",
+  "CityId": 300,
+  "PostalCode": "",
+  "Phone": "14033335568",
+  "LastUpdate": "2006-02-15T09:45:30",
+  "City": null,
+  "Customers": [],
+  "Staff": [],
+  "Stores": []
+}

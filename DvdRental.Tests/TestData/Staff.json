@@ -1,0 +1,17 @@
+{
+  "StaffId": 1,
+  "FirstName": "Mike",
+  "LastName": "Hillyer",
+  "AddressId": 3,
+  "Email": "Mike.Hillyer@sakilastaff.com",
+  "StoreId": 1,
+  "Active": true,
+  "Username": "Mike",
+  "Password": "8cb2237d0679ca88db6464eac60da96345513964",
+  "LastUpdate": "2006-05-16T16:13:11.79328",
+  "Picture": "iVBORw0KWgo=",
+  "Address": null,
+  "Payments": [],
+  "Rentals": [],
+  "Store": null
+}
