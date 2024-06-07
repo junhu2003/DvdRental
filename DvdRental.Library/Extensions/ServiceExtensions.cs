@@ -6,7 +6,6 @@ using DvdRental.Library.Models;
 using DvdRental.Library.Repositories;
 using DvdRental.Library.Services;
 using DvdRental.Library.Validators;
-using DvdRental.Library;
 
 namespace DvdRental.Library.Extensions
 {
@@ -14,7 +13,21 @@ namespace DvdRental.Library.Extensions
     {
         public static void AddRepositories(this IServiceCollection services)
         {
-            services.AddTransient<IActorRepository, ActorRepository>();            
+            services.AddTransient<IActorRepository, ActorRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IFilmCategoryRepository, FilmCategoryRepository>();
+            services.AddTransient<IFilmRepository, FilmRepository>();
+            services.AddTransient<ILanguageRepository, LanguageRepository>();
+            services.AddTransient<IFilmActorRepository, FilmActorRepository>();
+            services.AddTransient<IInventoryRepository, InventoryRepository>();
+            services.AddTransient<IRentalRepository, RentalRepository>();
+            services.AddTransient<IPaymentRepository, PaymentRepository>();
+            services.AddTransient<IStaffRepository, StaffRepository>();
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<IAddressRepository, AddressRepository>();
+            services.AddTransient<ICityRepository, CityRepository>();
+            services.AddTransient<ICountryRepository, CountryRepository>();
+            services.AddTransient<IStoreRepository, StoreRepository>();
         }        
 
         public static void AddFactories(this IServiceCollection services)

@@ -1,0 +1,62 @@
+{
+  "FilmId": 3,
+  "Title": "Adaptation Holes",
+  "Description": "A Astounding Reflection of a Lumberjack And a Car who must Sink a Lumberjack in A Baloon Factory",
+  "ReleaseYear": 2006,
+  "LanguageId": 1,
+  "RentalDuration": 7,
+  "RentalRate": 2.99,
+  "Length": 50,
+  "ReplacementCost": 18.99,
+  "LastUpdate": "2013-05-26T14:50:58.951",
+  "SpecialFeatures": [
+    "Trailers",
+    "Deleted Scenes"
+  ],
+  "Fulltext": [
+    {
+      "Text": "adapt",
+      "Count": 1
+    },
+    {
+      "Text": "astound",
+      "Count": 1
+    },
+    {
+      "Text": "baloon",
+      "Count": 1
+    },
+    {
+      "Text": "car",
+      "Count": 1
+    },
+    {
+      "Text": "factori",
+      "Count": 1
+    },
+    {
+      "Text": "hole",
+      "Count": 1
+    },
+    {
+      "Text": "lumberjack",
+      "Count": 2
+    },
+    {
+      "Text": "must",
+      "Count": 1
+    },
+    {
+      "Text": "reflect",
+      "Count": 1
+    },
+    {
+      "Text": "sink",
+      "Count": 1
+    }
+  ],
+  "FilmActors": [],
+  "FilmCategories": [],
+  "Inventories": [],
+  "Language": null
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "CustomerId": 13,
+    "StoreId": 2,
+    "FirstName": "Karen",
+    "LastName": "Jackson",
+    "Email": "karen.jackson@sakilacustomer.org",
+    "AddressId": 17,
+    "Activebool": true,
+    "CreateDate": "2006-02-14",
+    "LastUpdate": "2013-05-26T14:49:45.738",
+    "Active": 1,
+    "Address": null,
+    "Payments": [],
+    "Rentals": []
+  },
+  {
+    "CustomerId": 235,
+    "StoreId": 1,
+    "FirstName": "Jackie",
+    "LastName": "Lynch",
+    "Email": "jackie.lynch@sakilacustomer.org",
+    "AddressId": 239,
+    "Activebool": true,
+    "CreateDate": "2006-02-14",
+    "LastUpdate": "2013-05-26T14:49:45.738",
+    "Active": 1,
+    "Address": null,
+    "Payments": [],
+    "Rentals": []
+  },
+  {
+    "CustomerId": 351,
+    "StoreId": 1,
+    "FirstName": "Jack",
+    "LastName": "Foust",
+    "Email": "jack.foust@sakilacustomer.org",
+    "AddressId": 356,
+    "Activebool": true,
+    "CreateDate": "2006-02-14",
+    "LastUpdate": "2013-05-26T14:49:45.738",
+    "Active": 1,
+    "Address": null,
+    "Payments": [],
+    "Rentals": []
+  }
+]
