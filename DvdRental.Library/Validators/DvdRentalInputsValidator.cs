@@ -8,7 +8,7 @@ namespace DvdRental.Library.Validators
         public DvdRentalInputsValidator()
         {
             RuleFor(x => x).NotNull().WithSeverity(Severity.Error);
-            RuleFor(x => x.ActorId).GreaterThan(0).WithSeverity(Severity.Error);            
+            //RuleFor(x => x.ActorId).GreaterThan(0).WithSeverity(Severity.Error);            
         }
     }
 }

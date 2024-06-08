@@ -12,12 +12,14 @@ namespace DvdRental.Library.Handlers
         {
         }
 
-        public override HandlerType HandlerType => HandlerType.FinalCalcHandler;
+        public override HandlerType HandlerType => HandlerType.FinalDvdRentalHandler;
 
         public override string[] RuleSets => new string[] { HandlerType.ToString() };
 
         protected override Task<DvdRentalContext> HandleImpl(DvdRentalContext context)
         {
+            context.Outputs.Customers = context.Customers;
+
             return Task.FromResult(context);
         }
     }

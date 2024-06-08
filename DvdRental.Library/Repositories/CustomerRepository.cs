@@ -11,18 +11,24 @@ namespace DvdRental.Library.Repositories
         {
             using (var _dbContext = (DvdRentalDbContext)_dbContextFactory.CreateDbContext(DatabaseType.Postgres))
             {
-                if (string.IsNullOrEmpty(email))
+                var customers = _dbContext.Customers.ToList();
+
+                if (!string.IsNullOrEmpty(firstName))
                 {
-                    return _dbContext.Customers.Where(c => c.FirstName.ToLower().Contains(firstName.ToLower()) 
-                        && c.LastName.ToLower().Contains(lastName.ToLower())).ToList();
+                    customers = customers.Where(c => c.FirstName.ToLower().Contains(firstName.ToLower())).ToList();                    
                 }
-                else
+
+                if (!string.IsNullOrEmpty(lastName))
+                { 
+                    customers = customers.Where(c => c.LastName.ToLower().Contains(lastName.ToLower())).ToList();
+                }
+
+                if (!string.IsNullOrEmpty(email))
                 {
-                    return _dbContext.Customers.Where(c => c.FirstName.ToLower().Contains(firstName.ToLower()) 
-                        && c.LastName.ToLower().Contains(lastName.ToLower()) 
-                        && c.Email != null && c.Email.ToLower().Contains(email.ToLower())).ToList();
+                    customers = customers.Where(c => c.Email.ToLower().Contains(email.ToLower())).ToList();
                 }
                 
+                return customers;
             }
         }
     }

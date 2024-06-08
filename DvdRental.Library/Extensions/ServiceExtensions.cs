@@ -40,7 +40,8 @@ namespace DvdRental.Library.Extensions
 
         public static void AddHandlers(this IServiceCollection services)
         {
-            services.AddTransient<IHandler, InitDvdRentalHandler>();            
+            services.AddTransient<IHandler, InitDvdRentalHandler>();
+            services.AddTransient<IHandler, RetrieveCustomersHandler>();
             services.AddTransient<IHandler, FinalDvdRentalHandler>();
         }
 

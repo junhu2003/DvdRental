@@ -14,6 +14,12 @@ namespace DvdRental.Library.Models
             Outputs = new DvdRentalOutputs();
         }
 
-        public Actor Actor { get; set; }
+        public Customer? Customer { get; set; } 
+        public List<Customer>? Customers { get; set; }
+
+        public Rental? Rental { get; set; }
+        public List<Rental>? Rentals { get; set; }
+
+        public Actor? Actor { get; set; }
     }
 }

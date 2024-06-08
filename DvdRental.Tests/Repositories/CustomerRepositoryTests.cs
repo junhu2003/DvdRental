@@ -35,7 +35,7 @@ namespace DvdRental.Tests.Repositories
         {
             var repo = new CustomerRepository(new DbContextFactory(_configuration));            
 
-            var customerList = repo.GetCustomers("inda", string.Empty, string.Empty);
+            var customerList = repo.GetCustomers("jenn", string.Empty, string.Empty);
 
             Assert.IsNotNull(customerList);
             Assert.IsNotNull(customerList.Count > 0);            

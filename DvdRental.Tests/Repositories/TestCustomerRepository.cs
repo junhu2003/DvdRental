@@ -10,17 +10,24 @@ namespace DvdRental.Tests.Repositories
         {
             var data = TestUtils.JsonFileToObject<IEnumerable<Customer>>(@"TestData\\Customers.json");
 
-            if (string.IsNullOrEmpty(email))
+            var customers = data.ToList();
+
+            if (!string.IsNullOrEmpty(firstName))
             {
-                return data?.Where(c => c.FirstName.ToLower().Contains(firstName.ToLower())
-                    && c.LastName.ToLower().Contains(lastName.ToLower())).ToList();
+                customers = customers.Where(c => c.FirstName.ToLower().Contains(firstName.ToLower())).ToList();
             }
-            else
+
+            if (!string.IsNullOrEmpty(lastName))
             {
-                return data?.Where(c => c.FirstName.ToLower().Contains(firstName.ToLower())
-                    && c.LastName.ToLower().Contains(lastName.ToLower())
-                    && c.Email != null && c.Email.ToLower().Contains(email.ToLower())).ToList();
+                customers = customers.Where(c => c.LastName.ToLower().Contains(lastName.ToLower())).ToList();
             }
+
+            if (!string.IsNullOrEmpty(email))
+            {
+                customers = customers.Where(c => c.Email.ToLower().Contains(email.ToLower())).ToList();
+            }
+
+            return customers;
         }
     }
 }

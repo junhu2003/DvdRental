@@ -9,5 +9,6 @@ namespace DvdRental.Library.Models
         public List<ValidationFailure> Errors { get; set; } = new List<ValidationFailure>();
 
         public Actor? Actor { get; set; }
+        public List<Customer>? Customers { get; set; }
     }
 }

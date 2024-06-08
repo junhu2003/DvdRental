@@ -14,6 +14,7 @@ namespace DvdRental.Tests
         private Mock<IValidator<DvdRentalContext>>? _validatorMock;
         private MockHandler? _handler1;
         private MockHandler? _handler2;
+        private MockHandler? _handler3;
 
         private Mock<IHandlerFactory> _handlerFactory = new Mock<IHandlerFactory>();
 
@@ -24,19 +25,22 @@ namespace DvdRental.Tests
             _validatorMock = new Mock<IValidator<DvdRentalContext>>();
             _validatorMock.Setup(x => x.Validate(It.IsAny<DvdRentalContext>())).Returns(() => new FluentValidation.Results.ValidationResult() { });
             _handler1 = new MockHandler(HandlerType.InitDvdRentalHandler, _validatorMock.Object, Mock.Of<ILogger<MockHandler>>(), Mock.Of<IContextStatusService>());
-            _handler2 = new MockHandler(HandlerType.FinalCalcHandler, _validatorMock.Object, Mock.Of<ILogger<MockHandler>>(), Mock.Of<IContextStatusService>());
+            _handler2 = new MockHandler(HandlerType.RetrieveCustomersHandler, _validatorMock.Object, Mock.Of<ILogger<MockHandler>>(), Mock.Of<IContextStatusService>());
+            _handler3 = new MockHandler(HandlerType.FinalDvdRentalHandler, _validatorMock.Object, Mock.Of<ILogger<MockHandler>>(), Mock.Of<IContextStatusService>());
             _handlerFactory.Setup(x => x.CreateHandler(It.Is<HandlerType>(x => x == HandlerType.InitDvdRentalHandler))).Returns(() => new MockHandler(HandlerType.InitDvdRentalHandler, _validatorMock.Object, Mock.Of<ILogger<MockHandler>>(), Mock.Of<IContextStatusService>()));
-            _handlerFactory.Setup(x => x.CreateHandler(It.Is<HandlerType>(x => x == HandlerType.FinalCalcHandler))).Returns(() => new MockHandler(HandlerType.FinalCalcHandler, _validatorMock.Object, Mock.Of<ILogger<MockHandler>>(), Mock.Of<IContextStatusService>()));
+            _handlerFactory.Setup(x => x.CreateHandler(It.Is<HandlerType>(x => x == HandlerType.RetrieveCustomersHandler))).Returns(() => new MockHandler(HandlerType.RetrieveCustomersHandler, _validatorMock.Object, Mock.Of<ILogger<MockHandler>>(), Mock.Of<IContextStatusService>()));
+            _handlerFactory.Setup(x => x.CreateHandler(It.Is<HandlerType>(x => x == HandlerType.FinalDvdRentalHandler))).Returns(() => new MockHandler(HandlerType.FinalDvdRentalHandler, _validatorMock.Object, Mock.Of<ILogger<MockHandler>>(), Mock.Of<IContextStatusService>()));
             _context = new DvdRentalContext();
         }
 
         [TestMethod]
         public async Task TestMultiple()
         {
-            await TestFactory(new[] { HandlerType.InitDvdRentalHandler, HandlerType.InitDvdRentalHandler, HandlerType.InitDvdRentalHandler, HandlerType.FinalCalcHandler }, 4);
+            await TestFactory(new[] { HandlerType.InitDvdRentalHandler, HandlerType.InitDvdRentalHandler, HandlerType.InitDvdRentalHandler, HandlerType.RetrieveCustomersHandler, HandlerType.FinalDvdRentalHandler }, 5);
 
             Assert.IsTrue(_context.HandlersExecuted.Count(x => x.Equals(HandlerType.InitDvdRentalHandler)) == 3);
-            Assert.IsTrue(_context.HandlersExecuted.Count(x => x.Equals(HandlerType.FinalCalcHandler)) == 1);
+            Assert.IsTrue(_context.HandlersExecuted.Count(x => x.Equals(HandlerType.RetrieveCustomersHandler)) == 1);
+            Assert.IsTrue(_context.HandlersExecuted.Count(x => x.Equals(HandlerType.FinalDvdRentalHandler)) == 1);
         }
 
 

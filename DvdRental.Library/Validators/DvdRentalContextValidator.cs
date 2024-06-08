@@ -20,14 +20,21 @@ namespace DvdRental.Library.Validators
             {
                 //validate context
                 RuleFor(context => context.Inputs).NotNull().WithSeverity(Severity.Error);
-                RuleFor(context => context.Actor).NotNull().WithSeverity(Severity.Error);                
+                RuleFor(context => context.DateAccept).GreaterThan(DateTime.MinValue).WithSeverity(Severity.Error);
 
-                //validate ControlParemeter
+                //validate Actor
                 RuleFor(context => context.Actor).SetValidator(_actorValidator);
             });
 
+            //validate Retrieve Customers handler
+            RuleSet(Handlers.HandlerType.RetrieveCustomersHandler.ToString(), () =>
+            {
+                // validate context
+                RuleFor(context => context.Customers).NotNull().WithSeverity(Severity.Error);
+            });
+
             //validate final handler
-            RuleSet(Handlers.HandlerType.FinalCalcHandler.ToString(), () =>
+            RuleSet(Handlers.HandlerType.FinalDvdRentalHandler.ToString(), () =>
             {
 
             });
