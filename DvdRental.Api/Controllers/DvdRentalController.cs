@@ -19,28 +19,6 @@ namespace DvdRental.Api.Controllers
             _dvdRental = dvdRental;
             _dvdRentalInvoker = dvdRentalInvoker;
         }
-        
-        [HttpPost]
-        [Route("Process")]
-        public async Task<ActionResult> Process(DvdRentalInputs dvdRentalInputs) 
-        {
-            _logger.LogInformation("Start processing ...");
-
-            var runDvdRentalCommand = new RunDvdRentalCommand(_dvdRental);
-            runDvdRentalCommand.DvdRentalInputs = dvdRentalInputs;
-
-            dvdRentalInputs.User = User?.Identity?.Name;
-
-            _dvdRentalInvoker.SetCommand(runDvdRentalCommand);
-            var outputs = await _dvdRentalInvoker.ExecuteCommand();
-
-            if (outputs?.Errors?.Count > 0)
-            {
-                return NotFound();
-            }
-
-            return Ok(outputs);
-        }
 
         [HttpPost]
         [Route("RetrieveCustomers")]
@@ -66,6 +44,30 @@ namespace DvdRental.Api.Controllers
             }
 
             return Ok(outputs.Customers);
+        }
+
+        [HttpPost]
+        [Route("RetrieveRentalsByCustomer")]
+        public async Task<ActionResult> RetrieveRentalsByCustomer(int custId)
+        {
+            _logger.LogInformation("Start processing ...");
+
+            var runDvdRentalCommand = new RunDvdRentalCommand(_dvdRental);
+            runDvdRentalCommand.DvdRentalInputs = new DvdRentalInputs()
+            {
+                CustomerId = custId,
+            };
+            runDvdRentalCommand.HandlerTypes = Constants.RETRIEVE_CUSTOMER_RENTALS_CHAIN;
+
+            _dvdRentalInvoker.SetCommand(runDvdRentalCommand);
+            var outputs = await _dvdRentalInvoker.ExecuteCommand();
+
+            if (outputs?.Errors?.Count > 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(outputs.Customer);
         }
     }
 }

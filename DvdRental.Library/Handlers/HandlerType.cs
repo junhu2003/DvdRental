@@ -5,6 +5,7 @@ namespace DvdRental.Library.Handlers
     {
         InitDvdRentalHandler,
         RetrieveCustomersHandler,
+        CustomerRentalsHandler,
         FinalDvdRentalHandler
     }
 }

@@ -23,7 +23,7 @@ namespace DvdRental.Library.Validators
                 RuleFor(context => context.DateAccept).GreaterThan(DateTime.MinValue).WithSeverity(Severity.Error);
 
                 //validate Actor
-                RuleFor(context => context.Actor).SetValidator(_actorValidator);
+                //RuleFor(context => context.Actor).SetValidator(_actorValidator);
             });
 
             //validate Retrieve Customers handler
@@ -31,6 +31,15 @@ namespace DvdRental.Library.Validators
             {
                 // validate context
                 RuleFor(context => context.Customers).NotNull().WithSeverity(Severity.Error);
+            });
+
+            //validate Retrieve Rentals by Customer handler
+            RuleSet(Handlers.HandlerType.CustomerRentalsHandler.ToString(), () =>
+            {                
+                //validate context
+                RuleFor(context => context.Inputs).NotNull().WithSeverity(Severity.Error);
+                RuleFor(context => context.Inputs.CustomerId).GreaterThan(0).WithSeverity(Severity.Error);
+                
             });
 
             //validate final handler
