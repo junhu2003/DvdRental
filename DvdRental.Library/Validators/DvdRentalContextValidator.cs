@@ -33,13 +33,42 @@ namespace DvdRental.Library.Validators
                 RuleFor(context => context.Customers).NotNull().WithSeverity(Severity.Error);
             });
 
+            //validate Customer by Id handler
+            RuleSet(Handlers.HandlerType.CustomerByIdHandler.ToString(), () =>
+            {
+                //validate context
+                RuleFor(context => context.Inputs).NotNull().WithSeverity(Severity.Error);
+                RuleFor(context => context.Inputs.CustomerId).GreaterThan(0).WithSeverity(Severity.Error);
+                RuleFor(context => context.Customer).NotNull().WithSeverity(Severity.Error);
+
+            });
+
             //validate Retrieve Rentals by Customer handler
             RuleSet(Handlers.HandlerType.CustomerRentalsHandler.ToString(), () =>
             {                
                 //validate context
                 RuleFor(context => context.Inputs).NotNull().WithSeverity(Severity.Error);
-                RuleFor(context => context.Inputs.CustomerId).GreaterThan(0).WithSeverity(Severity.Error);
-                
+                RuleFor(context => context.Inputs.CustomerId).GreaterThan(0).WithSeverity(Severity.Error);                
+
+            });
+
+            //validate Rental by id handler
+            RuleSet(Handlers.HandlerType.RentalByIdHandler.ToString(), () =>
+            {
+                //validate context
+                RuleFor(context => context.Inputs).NotNull().WithSeverity(Severity.Error);
+                RuleFor(context => context.Inputs.RentalId).GreaterThan(0).WithSeverity(Severity.Error);
+                RuleFor(context => context.Rental).NotNull().WithSeverity(Severity.Error);
+
+            });
+
+            //validate Retrieve Rental Film handler
+            RuleSet(Handlers.HandlerType.RentalFilmHandler.ToString(), () =>
+            {
+                //validate context
+                RuleFor(context => context.Inputs).NotNull().WithSeverity(Severity.Error);
+                RuleFor(context => context.Inputs.RentalId).GreaterThan(0).WithSeverity(Severity.Error);                
+
             });
 
             //validate final handler

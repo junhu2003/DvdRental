@@ -14,5 +14,13 @@ namespace DvdRental.Library.Repositories
                 return _dbContext.Rentals.Where(r => r.CustomerId == custId).ToList();
             }
         }
+
+        public Rental? GetById(int id)
+        {
+            using (var _dbContext = (DvdRentalDbContext)_dbContextFactory.CreateDbContext(DatabaseType.Postgres))
+            {
+                return _dbContext.Rentals.Where(r => r.RentalId == id).FirstOrDefault();
+            }
+        }
     }
 }

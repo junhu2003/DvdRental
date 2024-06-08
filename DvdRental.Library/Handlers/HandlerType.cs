@@ -5,7 +5,10 @@ namespace DvdRental.Library.Handlers
     {
         InitDvdRentalHandler,
         RetrieveCustomersHandler,
+        CustomerByIdHandler,
         CustomerRentalsHandler,
+        RentalByIdHandler,
+        RentalFilmHandler,
         FinalDvdRentalHandler
     }
 }

@@ -11,7 +11,7 @@ using DvdRental.Library.CustomTypes;
 using DvdRental.Library.Services;
 using DvdRental.Tests;
 
-namespace Victor.Calculator.Tests
+namespace DvdRental.Tests.Handlers
 {
     [TestClass]
     public class CustomerRentalsHandlerTests
@@ -55,14 +55,15 @@ namespace Victor.Calculator.Tests
             _rentalRepositoryMock?.Setup(x => x.GetRentalByCustomer(It.IsAny<int>())).Returns(() => new List<Rental>());
 
             var handler = new CustomerRentalsHandler(_logger.Object, _configuration.Object,
-                _customerRepositoryMock?.Object, _addressRepositoryMock?.Object, _cityRepositoryMock?.Object, _countryRepositoryMock?.Object,
+                _addressRepositoryMock?.Object, _cityRepositoryMock?.Object, _countryRepositoryMock?.Object,
                 _storeRepositoryMock?.Object, _paymentRepositoryMock?.Object, _staffRepositoryMock?.Object, _rentalRepositoryMock?.Object,
                 DvdRentalContextValidatorCreator.Create(), Mock.Of<IContextStatusService>());
 
             var result = await handler.Handle(new DvdRentalContext()
             {
                 DateAccept = DateTime.MinValue,
-                Inputs = new DvdRentalInputs() { CustomerId = 0 },
+                Customer = new Customer(),
+                Inputs = new DvdRentalInputs() { CustomerId = 0 }, // should fail once here
                 Outputs = new DvdRentalOutputs() { }
             });
 

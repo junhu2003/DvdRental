@@ -7,32 +7,34 @@ using DvdRental.Library.Repositories;
 
 namespace DvdRental.Library.Handlers
 {
-    public class InitDvdRentalHandler : HandlerBase
+    public class RentalByIdHandler : HandlerBase
     {
         private readonly IConfiguration _configuration;
 
-        public InitDvdRentalHandler(ILogger<InitDvdRentalHandler> logger, IConfiguration configuration,            
-            IValidator<DvdRentalContext> contextValidator, IContextStatusService contextStatusService) : base(logger, contextValidator, contextStatusService)
+        private readonly IRentalRepository _rentalRepository;        
+
+        public RentalByIdHandler(ILogger<InitDvdRentalHandler> logger, IConfiguration configuration, 
+            IRentalRepository rentalRepository,             
+        IValidator<DvdRentalContext> contextValidator, IContextStatusService contextStatusService) : base(logger, contextValidator, contextStatusService)
         {
-            _configuration = configuration;              
+            _configuration = configuration;
+
+            _rentalRepository = rentalRepository;            
         }
 
-        public override HandlerType HandlerType => HandlerType.InitDvdRentalHandler;
+        public override HandlerType HandlerType => HandlerType.RentalByIdHandler;
 
         public override string[] RuleSets => new string[] { HandlerType.ToString() };
 
         protected override async Task<DvdRentalContext> HandleImpl(DvdRentalContext context)
         {     
-
-            //initialize calculator context (i.e. load employee, employer data etc.)            
             _logger.LogInformation($"{HandlerType} - Date processing: {context.DateAccept.ToString("yyyy-MM-dd hh:mm:ss")}");
 
-            // set date accept
-            context.DateAccept = DateTime.Now;
+            context.Rental = _rentalRepository.GetById(context.Inputs.RentalId);            
 
             _logger.LogInformation($"{HandlerType} - Finish processing ...");
             return context;
         }
-
+        
     }
 }
