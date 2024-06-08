@@ -1,10 +1,11 @@
-﻿using DvdRental.Library.Models;
+﻿using DvdRental.Library.Handlers;
+using DvdRental.Library.Models;
 
 namespace DvdRental.Library
 {
     //calc interface methods go here
     public interface IDvdRental
     {
-        Task<DvdRentalContext> Execute(DvdRentalContext context);
+        Task<DvdRentalContext> Execute(DvdRentalContext context, HandlerType[] handlerTypes);
     }
 }

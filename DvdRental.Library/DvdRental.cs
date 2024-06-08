@@ -20,12 +20,12 @@ namespace DvdRental.Library
             _validator = validator;
         }
 
-        public async Task<DvdRentalContext> Execute(DvdRentalContext context)
+        public async Task<DvdRentalContext> Execute(DvdRentalContext context, HandlerType[] handlerTypes)
         {
             _context = context;
             _validator.ValidateAndThrow(_context.Inputs);
 
-            var handler = _handlerChainFactory.CreateChain(Constants.SINGLE_CALC_CHAIN);
+            var handler = _handlerChainFactory.CreateChain(handlerTypes);
 
             var result = await handler.Handle(_context);
 

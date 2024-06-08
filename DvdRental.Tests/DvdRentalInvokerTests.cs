@@ -1,4 +1,5 @@
 using DvdRental.Library;
+using DvdRental.Library.Handlers;
 using DvdRental.Library.Models;
 using Moq;
 
@@ -13,7 +14,7 @@ namespace DvdRental.Tests
         public void Initialize()
         {
             _dvdRental = new Mock<IDvdRental>();
-            _dvdRental.Setup(x => x.Execute(It.IsAny<DvdRentalContext>()));
+            _dvdRental.Setup(x => x.Execute(It.IsAny<DvdRentalContext>(), It.IsAny<HandlerType[]>()));
         }
 
         [TestMethod]
@@ -25,7 +26,7 @@ namespace DvdRental.Tests
 
             await ci.ExecuteCommand();
 
-            _dvdRental?.Verify(x => x.Execute(It.IsAny<DvdRentalContext>()), Times.Once());
+            _dvdRental?.Verify(x => x.Execute(It.IsAny<DvdRentalContext>(), It.IsAny<HandlerType[]>()), Times.Once());
         }
     }
 }
