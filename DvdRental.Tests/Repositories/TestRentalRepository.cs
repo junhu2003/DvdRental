@@ -11,5 +11,12 @@ namespace DvdRental.Tests.Repositories
 
             return data?.ToList<Rental>();
         }
+
+        public Rental? GetById(int id)
+        {
+            var data = TestUtils.JsonFileToObject<IEnumerable<Rental>>(@"TestData\\Rentals.json");
+
+            return data?.Where(r => r.RentalId == id).FirstOrDefault();
+        }
     }
 }

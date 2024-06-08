@@ -46,7 +46,7 @@ namespace DvdRental.Api.Controllers
             return Ok(outputs.Customers);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("RetrieveRentalsByCustomer")]
         public async Task<ActionResult> RetrieveRentalsByCustomer(int custId)
         {
@@ -68,6 +68,30 @@ namespace DvdRental.Api.Controllers
             }
 
             return Ok(outputs.Customer);
+        }
+
+        [HttpGet]
+        [Route("RetrieveFilmByRental")]
+        public async Task<ActionResult> RetrieveFilmByRental(int rentalId)
+        {
+            _logger.LogInformation("Start processing ...");
+
+            var runDvdRentalCommand = new RunDvdRentalCommand(_dvdRental);
+            runDvdRentalCommand.DvdRentalInputs = new DvdRentalInputs()
+            {
+                RentalId = rentalId,
+            };
+            runDvdRentalCommand.HandlerTypes = Constants.RETRIEVE_RENTAL_FILM_CHAIN;
+
+            _dvdRentalInvoker.SetCommand(runDvdRentalCommand);
+            var outputs = await _dvdRentalInvoker.ExecuteCommand();
+
+            if (outputs?.Errors?.Count > 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(outputs.Rental);
         }
     }
 }

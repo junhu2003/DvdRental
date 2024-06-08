@@ -9,6 +9,7 @@ namespace DvdRental.Library.Repositories
 {
     public interface IRentalRepository
     {
+        Rental? GetById(int id);
         List<Rental>? GetRentalByCustomer(int custId);
     }
 }

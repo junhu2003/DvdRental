@@ -11,7 +11,7 @@ using DvdRental.Library.CustomTypes;
 using DvdRental.Library.Services;
 using DvdRental.Tests;
 
-namespace Victor.Calculator.Tests
+namespace DvdRental.Tests.Handlers
 {
     [TestClass]
     public class RetrieveCustomersHandlerTests
