@@ -18,7 +18,8 @@ namespace DvdRental.Library.Handlers
 
         protected override Task<DvdRentalContext> HandleImpl(DvdRentalContext context)
         {
-            context.Outputs.Customers = context.Customers;
+            context.Outputs.Customer = context.Customer;
+            context.Outputs.Customers = context.Customers;            
 
             return Task.FromResult(context);
         }

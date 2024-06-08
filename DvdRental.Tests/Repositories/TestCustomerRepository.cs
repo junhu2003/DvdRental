@@ -29,5 +29,12 @@ namespace DvdRental.Tests.Repositories
 
             return customers;
         }
+
+        public Customer? GetById(int id)
+        {
+            var data = TestUtils.JsonFileToObject<IEnumerable<Customer>>(@"TestData\\Customers.json");
+
+            return data?.Where(c => c.CustomerId == id).FirstOrDefault();
+        }
     }
 }

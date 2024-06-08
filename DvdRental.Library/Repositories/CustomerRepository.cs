@@ -31,5 +31,13 @@ namespace DvdRental.Library.Repositories
                 return customers;
             }
         }
+
+        public Customer? GetById(int id) 
+        {
+            using (var _dbContext = (DvdRentalDbContext)_dbContextFactory.CreateDbContext(DatabaseType.Postgres))
+            {
+                return _dbContext.Customers.Where(c => c.CustomerId == id).FirstOrDefault();
+            }
+        }
     }
 }
