@@ -20,7 +20,7 @@ namespace DvdRental.Api.Controllers
             _dvdRentalInvoker = dvdRentalInvoker;
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("RetrieveCustomers")]
         public async Task<ActionResult> RetrieveCustomers(string? firstName, string? lastName, string? email)
         {
